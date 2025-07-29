@@ -18,14 +18,15 @@
         </header>
         <div class="output-container">
             <input type="text" class="password" aria-label="Generated Password" readonly>
-            <i class="fa-solid fa-copy"></i>
+            <i class="fa-regular fa-copy"></i>
         </div>
         <div class="password-settings">
             <div class="length">
                 <label for="password-length">Password Length</label>
                 <div>
-                    <input type="range" id="password-length">
-                    <span class="password-length">12</span>
+                    <input type="range" id="password-length" min="25" max="100" value="85">
+                    <!--  -->
+                    <span class="password-length">18</span>
                 </div>
             </div>
             <div class="uppercase">
@@ -47,11 +48,11 @@
         </div>
 
         <button class="generate-password">
-            <i class="fa-solid fa-key"></i>
+            <i class="fa-solid fa-key copy"></i>
             Generate Password
         </button>
         <footer class="password-strength">
-            <div>
+            <div class="words">
                 <h3>Password Strength:</h3>
                 <h3 class="status">Strong</h3>
             </div>

@@ -1,0 +1,230 @@
+:root {
+    --highlight-color: #25435a;
+    --gradient-background: linear-gradient(to right, #2b5876, #4e4376);
+
+    --gray: rgb(228, 228, 228);
+}
+
+html {
+    background: var(--gradient-background);
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+main {
+    background-color: #fafafa;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 30px;
+    width: 95vw;
+    min-width: 280px;
+    max-width: 460px;
+}
+
+main>header {
+    text-align: center;
+
+    & h1 {
+        color: var(--highlight-color);
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+    & h1::after {
+        content: '';
+        display: block;
+        width: 200px;
+        justify-self: center;
+        height: 4px;
+        border-radius: 30px;
+        background: var(--gradient-background);
+    }
+}
+
+.output-container {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+
+    & .password {
+        width: 100%;
+        padding: 12px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        box-shadow: 2px 2px 15px rgba(128, 128, 128, 0.192);
+        cursor: pointer;
+    }
+
+    & i {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--highlight-color);
+        padding: 7px;
+        background-color: rgba(128, 128, 128, 0.06);
+        border-radius: 5px;
+    }
+}
+
+.password-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 13px;
+    background-color: #fff;
+
+    & label {
+        color: black;
+        user-select: none;
+    }
+
+    &>div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    & input[type="checkbox"] {
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 1px solid var(--highlight-color);
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7em;
+        cursor: pointer;
+    }
+
+    & input[type="checkbox"]:checked {
+        color: white;
+        background-color: var(--highlight-color);
+    }
+
+    & input[type="checkbox"]:checked::after {
+        content: '✔';
+    }
+}
+
+.length {
+    & input#password-length {
+        -webkit-appearance: none;
+        width: 120px;
+        height: 4px;
+        background-color: var(--gray);
+        color: var(--highlight-color);
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    & input#password-length::-webkit-slider-thumb:active {
+        cursor: grabbing;
+    }
+
+    & input#password-length::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 15px;
+        height: 15px;
+        background-color: var(--highlight-color);
+        border-radius: 50%;
+        cursor: grab;
+    }
+
+
+    & span.password-length {
+        color: var(--highlight-color);
+        background-color: rgba(135, 207, 235, 0.144);
+        padding: 2px 5px;
+        font-size: 0.8rem;
+    }
+}
+
+.generate-password {
+    border-radius: 10px;
+    align-self: stretch;
+    padding: 10px;
+    color: white;
+    background: var(--gradient-background);
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.generate-password:hover {
+    transform: translateY(-5px);
+}
+
+.generate-password:active {
+    transform: translateY(0) scale(1.03);
+}
+
+main>footer.password-strength {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+
+    & div.words {
+        display: flex;
+        justify-content: space-between;
+        color: black;
+
+        & h3 {
+            font-weight: normal;
+        }
+
+        & h3.status {
+            color: var(--highlight-color);
+        }
+    }
+
+    & .bar {
+        border-radius: 8px;
+        overflow: hidden;
+        height: 6px;
+        width: 100%;
+        background-color: var(--gray);
+
+        & .strength-bar {
+            width: 80%;
+            height: 100%;
+            background-color: rgb(41, 189, 90);
+        }
+    }
+}
+
+@media (max-height: 550px) {
+    body {
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 290px) {
+    body {
+        justify-content: flex-start;
+    }
+}
