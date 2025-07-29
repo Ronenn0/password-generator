@@ -63,7 +63,7 @@ Easily generate secure passwords with customizable options and real-time strengt
 
 ## 📸 Preview
 
-![Password Generator Preview](preview.png)
+![Password Generator Preview](https://github.com/user-attachments/assets/aa42ff9c-f75d-44e6-a4c0-d5663acb6e0f)
 
 ---
 
