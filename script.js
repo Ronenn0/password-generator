@@ -4,6 +4,9 @@
 //Password-Output Element
 const passwordOutput = document.querySelector('input.password');
 
+//Length Range Input
+const lengthInputRange = document.querySelector('input#password-length');
+
 //Generate Password button
 const generateButton = document.querySelector('.generate-password');
 
@@ -23,7 +26,6 @@ function generatePassword() {
 
 
     //settings
-    const lengthInputRange = document.querySelector('input#password-length');
     const uppercaseInput = document.getElementById('include-uppercase');
     const lowercaseInput = document.getElementById('include-lowercase');
     const numbersInput = document.getElementById('include-numbers');
@@ -51,8 +53,6 @@ function generatePassword() {
 
     //Strength: 35% depends on whats included | 65% depends on the length
     strengthPercentage = strengthPercentage / (UPPERCASE_LETTERS.length + LOWERCASE_LETTERS.length + NUMBERS.length + SYMBOLS.length) * 35;
-    console.log(strengthPercentage);
-
 
     //Verify that atleast one checkbox got checked.
     if (strengthPercentage == 0) {
@@ -60,6 +60,7 @@ function generatePassword() {
         return;
     }
 
+    //Adds Length's percentage
     strengthPercentage += passwordLength / maxLength * 65; //length
 
     //generating the password
@@ -67,9 +68,6 @@ function generatePassword() {
     for (let i = 0; i < passwordLength; i++) {
         password += str[Math.floor(Math.random() * str.length)];
     }
-    console.log(str, password);
-
-
 
     //Display the password
     passwordOutput.value = password;
@@ -78,11 +76,13 @@ function generatePassword() {
     passwordStrength.className = `${strengthPercentage < 45 ? 'weak' : strengthPercentage < 65 ? 'medium' : 'strong'}`;
 
     //change bar's width
-    console.log(strengthPercentage);
-
     strengthBar.style.width = `${strengthPercentage}%`;
 }
 
+/**
+ * Adds the event listeners.
+ * Puts all the event listeners at one place.
+ */
 function addEventListeners() {
     // Generates a password when the Generate Password gets clicked
     generateButton.addEventListener('click', generatePassword);
@@ -112,10 +112,6 @@ function addEventListeners() {
     eye.addEventListener('click', () => {
         passwordOutput.type = passwordOutput.type == 'text' ? 'password' : 'text';
         eye.className = eye.className == 'fa-solid fa-eye' ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
-        console.log(passwordOutput.type);
-        console.log(passwordOutput.className);
-
-
     });
 }
 
