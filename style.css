@@ -1,7 +1,6 @@
 :root {
     --highlight-color: #25435a;
     --gradient-background: linear-gradient(to right, #2b5876, #4e4376);
-
     --gray: rgb(228, 228, 228);
 }
 
@@ -60,7 +59,6 @@ main>header {
 .output-container {
     position: relative;
     width: 100%;
-    cursor: pointer;
 
     & .password {
         width: 100%;
@@ -69,10 +67,10 @@ main>header {
         border: none;
         outline: none;
         box-shadow: 2px 2px 15px rgba(128, 128, 128, 0.192);
-        cursor: pointer;
+        letter-spacing: 1px;
     }
 
-    & i {
+    & div.icons {
         position: absolute;
         right: 10px;
         top: 50%;
@@ -80,10 +78,25 @@ main>header {
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 5px;
+    }
+
+    & i {
+
         color: var(--highlight-color);
         padding: 7px;
         background-color: rgba(128, 128, 128, 0.06);
         border-radius: 5px;
+        cursor: pointer;
+        transition: scale 0.2s;
+
+        &#copy.copied {
+            color: rgb(7, 99, 7);
+        }
+
+        &:hover {
+            scale: 1.2;
+        }
     }
 }
 
@@ -105,7 +118,7 @@ main>header {
     }
 
     & input[type="checkbox"] {
-        -webkit-appearance: none;
+        appearance: none;
         width: 20px;
         height: 20px;
         border: 1px solid var(--highlight-color);
@@ -129,7 +142,7 @@ main>header {
 
 .length {
     & input#password-length {
-        -webkit-appearance: none;
+        appearance: none;
         width: 120px;
         height: 4px;
         background-color: var(--gray);
@@ -157,8 +170,11 @@ main>header {
     & span.password-length {
         color: var(--highlight-color);
         background-color: rgba(135, 207, 235, 0.144);
-        padding: 2px 5px;
         font-size: 0.8rem;
+        display: inline-block;
+        width: 25px;
+        padding: 3px 0;
+        text-align: center;
     }
 }
 
@@ -181,11 +197,35 @@ main>header {
     transform: translateY(0) scale(1.03);
 }
 
-main>footer.password-strength {
+
+main>footer#password-strength {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    width: 100%;
+
+    &.weak {
+        --strength-status: 'Weak';
+        --strength-color: rgb(196, 56, 56);
+    }
+
+    &.medium {
+        --strength-status: 'Medium';
+        --strength-color: rgb(201, 138, 20);
+    }
+
+    &.strong {
+        --strength-status: 'Strong';
+        --strength-color: rgb(23, 153, 23);
+    }
+
+    & .strength-bar {
+        background-color: var(--strength-color);
+    }
+
+    & h3.status::after {
+        content: var(--strength-status);
+        color: var(--strength-color);
+    }
 
     & div.words {
         display: flex;
@@ -196,25 +236,23 @@ main>footer.password-strength {
             font-weight: normal;
         }
 
-        & h3.status {
-            color: var(--highlight-color);
-        }
     }
 
     & .bar {
         border-radius: 8px;
         overflow: hidden;
-        height: 6px;
-        width: 100%;
+        height: 9px;
         background-color: var(--gray);
 
         & .strength-bar {
             width: 80%;
             height: 100%;
-            background-color: rgb(41, 189, 90);
+            transition: width 0.2s;
         }
     }
 }
+
+
 
 @media (max-height: 550px) {
     body {

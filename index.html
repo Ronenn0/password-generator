@@ -17,33 +17,37 @@
             <h1>Password Generator</h1>
         </header>
         <div class="output-container">
-            <input type="text" class="password" aria-label="Generated Password" readonly>
-            <i class="fa-regular fa-copy"></i>
+            <input type="text" class="password" aria-label="Generated Password" maxlength="30" readonly>
+            <div class="icons">
+                <i id="eye" class="fa-solid fa-eye-slash"></i>
+                <i id="copy" class="fa-regular fa-copy"></i>
+
+            </div>
         </div>
         <div class="password-settings">
             <div class="length">
                 <label for="password-length">Password Length</label>
                 <div>
-                    <input type="range" id="password-length" min="25" max="100" value="85">
+                    <input type="range" id="password-length" min="600" max="2400" value="1800">
                     <!--  -->
                     <span class="password-length">18</span>
                 </div>
             </div>
             <div class="uppercase">
                 <label for="include-uppercase">Include Uppercase</label>
-                <input type="checkbox" id="include-uppercase">
+                <input type="checkbox" id="include-uppercase" checked>
             </div>
             <div class="lowercase">
                 <label for="include-lowercase">Include Lowercase</label>
-                <input type="checkbox" id="include-lowercase">
+                <input type="checkbox" id="include-lowercase" checked>
             </div>
             <div class="numbers">
                 <label for="include-numbers">Include Numbers</label>
-                <input type="checkbox" id="include-numbers">
+                <input type="checkbox" id="include-numbers" checked>
             </div>
             <div class="symbols">
                 <label for="include-symbols">Include Symbols</label>
-                <input type="checkbox" id="include-symbols">
+                <input type="checkbox" id="include-symbols" checked>
             </div>
         </div>
 
@@ -51,10 +55,10 @@
             <i class="fa-solid fa-key copy"></i>
             Generate Password
         </button>
-        <footer class="password-strength">
+        <footer id="password-strength">
             <div class="words">
                 <h3>Password Strength:</h3>
-                <h3 class="status">Strong</h3>
+                <h3 class="status"></h3>
             </div>
             <div class="bar">
                 <div class="strength-bar"></div>
